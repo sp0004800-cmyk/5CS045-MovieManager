@@ -1,2 +1,1 @@
-Install Twig in public_html using composer require "twig/twig:^3.0". Upload this folder to public_html/moviemanager. Create movie_config.php in the home directory (outside public_html), containing <?php $db_password = 'YOUR_PASSWORD';
-Requires PHP 7.4+ with compatible Twig, mysqli and mysqlnd, HTTPS, existing movie and users tables. All registered users can manage the shared catalogue; restrict registration if public editing is not intended. Basic math CAPTCHA is educational, not robust bot protection. Test on MI-Linux before submission. Do not include credentials in Git or ZIP. Run an authorised automated security scan and report actual findings. No scan or deployment has been performed here.
+
