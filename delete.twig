@@ -1,0 +1,1 @@
+{% extends 'base.twig' %}{% block content %}<h2>Delete movie</h2><p>Delete {{ movie.movie_name }}?</p><form method="post"><input type="hidden" name="csrf" value="{{ csrf }}"><button>Confirm deletion</button> <a href="list-movies.php">Cancel</a></form>{% endblock %}
