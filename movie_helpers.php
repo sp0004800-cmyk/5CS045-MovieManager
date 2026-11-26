@@ -1,0 +1,4 @@
+<?php
+function movie_input() { return ['movie_name'=>field($_POST,'movie_name'),'genre'=>field($_POST,'genre'),'price'=>field($_POST,'price'),'date_released'=>field($_POST,'date_released')]; }
+function valid_movie($m) { $d=DateTime::createFromFormat('!Y-m-d',$m['date_released']); return $m['movie_name']!=='' && strlen($m['movie_name'])<=100 && $m['genre']!=='' && strlen($m['genre'])<=200 && preg_match('/^\d{1,5}(\.\d{1,2})?$/D',$m['price']) && $d && $d->format('Y-m-d')===$m['date_released']; }
+function get_movie($db) { $id=filter_var($_GET['id']??null,FILTER_VALIDATE_INT,['options'=>['min_range'=>1]]); if(!$id){http_response_code(400);exit('Invalid movie ID.');} $s=$db->prepare('SELECT * FROM movie WHERE movie_id=?'); $s->bind_param('i',$id); $s->execute(); $m=$s->get_result()->fetch_assoc(); if(!$m){http_response_code(404);exit('Movie not found.');} return $m; }
